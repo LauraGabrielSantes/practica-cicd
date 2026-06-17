@@ -1,0 +1,23 @@
+name: Hola Mundo en C
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  build-and-run:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout del repositorio
+        uses: actions/checkout@v4
+
+      - name: Instalar compilador GCC
+        run: sudo apt update && sudo apt install -y gcc
+
+      - name: Compilar programa en C
+        run: gcc hola_mundo.c -o hola_mundo
+
+      - name: Ejecutar programa
+        run: ./hola_mundo
